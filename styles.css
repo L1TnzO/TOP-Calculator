@@ -23,13 +23,18 @@ body > div{
 .display{
     text-align: end;
     padding: 100px 30px 30px 30px;
+    overflow: auto;
+    overflow-wrap: break-word;
 }
 
-.history{
-    padding-bottom: 16px;
-    color: #818181;
-    font-size: 20px;
+.history {
+  padding-bottom: 16px;
+  color: #818181;
+  font-size: 20px;
+  overflow: auto;
+  overflow-wrap: break-word;
 }
+
 
 .result{
     font-size: 35px;
