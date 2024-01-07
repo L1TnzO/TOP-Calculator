@@ -1,0 +1,143 @@
+body{
+    background-color: #E5E5E5;
+    text-align: center;
+}
+
+body > div{
+    height: 90vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator-container{
+    margin: auto;
+    background-color: #17181A;
+    justify-content: center;
+    border-radius: 24px;
+    width: 320px;
+    box-shadow: inset -10px 25px 30px rgba(36, 165, 255, 0.25);
+}
+
+.display{
+    text-align: end;
+    padding: 100px 30px 30px 30px;
+    overflow: auto;
+    overflow-wrap: break-word;
+}
+
+.history {
+  padding-bottom: 16px;
+  color: #818181;
+  font-size: 20px;
+  overflow: auto;
+  overflow-wrap: break-word;
+}
+
+
+.result{
+    font-size: 35px;
+    color:white;
+}
+
+.buttons-container{
+    display: grid;
+    padding: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "Ac del division mult"
+    "_7 _8 _9 minus"
+    "_4 _5 _6 sum"
+    "_1 _2 _3 sum"
+    "_0 _0 point equal";
+}
+
+.number, .clear, .operation{
+    border-radius: 10px;
+    padding: 13px;
+    margin: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.number:active, .clear:active, .operation:active {
+    background-color: #aaa;
+    transform: scale(0.95);
+  }
+
+.number{
+    background-color: #303136;
+    color: #29A8FF;
+    font-weight: 1000;
+}
+
+.clear{
+    background-color: #616161;
+    color: #A5A5A5;
+}
+
+.operation{
+    background-color: #005DB2;
+    color: #339DFF;
+}
+
+
+#_1 {
+    grid-area: _1;
+  }
+#_2 {
+    grid-area: _2;
+  }
+#_3 {
+    grid-area: _3;
+  }
+#_4 {
+    grid-area: _4;
+  }
+#_5 {
+    grid-area: _5;
+  }
+#_6 {
+    grid-area: _6;
+  }
+#_7 {
+    grid-area: _7;
+  }
+#_8 {
+    grid-area: _8;
+  }
+#_9 {
+    grid-area: _9;
+  }
+#_0 {
+    grid-area: _0;
+  }
+#division {
+    grid-area: division;
+  }
+#mult {
+    grid-area: mult;
+  }
+#minus {
+    grid-area: minus;
+  }
+#sum {
+    grid-area: sum;
+  }
+#Ac {
+    grid-area: Ac;
+  }
+#del {
+    grid-area: del;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+#point {
+    grid-area: point;
+  }
+#equal {
+    grid-area: equal;
+  }
