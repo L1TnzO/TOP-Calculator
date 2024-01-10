@@ -14,10 +14,13 @@ btnContainer.addEventListener ('click', (event)=> {
                 break;
             case '⌫':
                 history.textContent = history.textContent.slice(0, -1);
+                if (history.textContent == ''){
+                    history.textContent = '0'; 
+                }
                 break;
             case 'Ac':
-                history.textContent = '';
-                result.textContent = '0';
+                history.textContent = '0';
+                result.textContent = '=0';
                 break;
             case '/':
             case '*':
@@ -27,14 +30,19 @@ btnContainer.addEventListener ('click', (event)=> {
                 history.textContent += target.textContent;
                 break;
             default:
-                history.textContent += target.textContent;
+                if (history.textContent == '0'){
+                    history.textContent = '';
+                    history.textContent += target.textContent;
+                }
+                else{history.textContent += target.textContent;}
         }
     }
 })
 
+
 const operate = () => {
     let str = history.textContent;
-    str = str.replace(/([/*+-]).*?([/*+-])/, '');
+    str = str.replace(/[/*+-]$/, '');
     if (str.includes('/') || str.includes('*') || str.includes('-') || str.includes('+')) {
         equal(str)
         history.textContent = result.textContent;
@@ -43,8 +51,16 @@ const operate = () => {
 
 
 const equal = (str)=>{
-    const foundOperator = str.match(/[/*+-]/)[0];
-    [a,b] = str.split(foundOperator).map(x => x ? Number(x) : NaN); //Verify if the second parameter is empty, and converts it to NaN
+    const foundOperator = str.match(/\b[/*+-]\b/)[0];
+    let isNegative = false;
+    if (str.startsWith('-')) {
+        isNegative = true;
+        str = str.slice(1);
+    }
+    let [a,b] = str.split(foundOperator).map(x => x ? Number(x) : NaN);
+    if (isNegative) { 
+        a = -a; 
+    }
     if (!isNaN(b)) {
         switch (foundOperator){
             case '/':
@@ -63,5 +79,7 @@ const equal = (str)=>{
         result.textContent = resultNumber.toFixed(8).replace(/\.?0+$/, '');
     }
 }
+
+
 
 //TODO: fix minus operation.
